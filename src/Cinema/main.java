@@ -1,6 +1,9 @@
 package Cinema;
 
-import kotlin.reflect.jvm.internal.impl.util.ValueParameterCountCheck;
+import People.Customer;
+import People.Employee;
+import People.Soldier;
+import People.Student;
 
 public class main {
     public static void main(String[] args) {

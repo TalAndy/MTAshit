@@ -1,4 +1,4 @@
-package Cinema;
+package People;
 
 public class Pensioner extends Customer{
 

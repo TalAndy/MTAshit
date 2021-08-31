@@ -1,9 +1,6 @@
-package Cinema;
-
-import java.util.Objects;
+package People;
 
 public class Person {
-//    getClass() == Person, getClass()= Customer... etc
     String name;
     int ID;
     String mailAddress;

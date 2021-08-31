@@ -1,6 +1,4 @@
-package Cinema;
-
-import java.util.ArrayList;
+package People;
 
 public class Employee extends Person{
     int[] daysWorked = new int[30];

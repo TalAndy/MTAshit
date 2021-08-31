@@ -1,4 +1,4 @@
-package Cinema;
+package People;
 
 public class Soldier extends Customer {
     String releaseData;
