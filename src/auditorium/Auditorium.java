@@ -12,6 +12,9 @@ public abstract class  Auditorium {
     Movie movieDisplayed;
     boolean[][] seatsArr;
 
+    public int getAuditoriumNum() {
+        return auditoriumNum;
+    }
 
     public Auditorium(int auditoriumNum, Movie movieDisplayed) {
         this.auditoriumNum = auditoriumNum;
@@ -66,5 +69,9 @@ public abstract class  Auditorium {
                 arrayToReset[i][j] = false;
             }
         }
+    }
+
+    public void setmovieDisplayed(Movie newMovie){
+        this.movieDisplayed = newMovie;
     }
 }

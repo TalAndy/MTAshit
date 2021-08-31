@@ -22,9 +22,8 @@ public class Cinema  {
     }
 
     public void addNewMovie(Movie movieToAdd){
-
-        // Check if movie exist in our DBs.
-        if(isMovieExist(movieToAdd.movieName)){
+        // Check if movie exist in our DBs. -1 for false, otherwise true
+        if(isMovieExist(movieToAdd.movieName) != -1){
             System.out.println("Movie already exist, nothing to add. Exiting....");
             return;
         }
@@ -38,16 +37,58 @@ public class Cinema  {
         //
         long ratio = roundUp(moviesArray.length, auditoriumArray.length);
         int indexToAdd = -1;
-        for (int i = 0; i <= ratio; i++){
+        int i;
+        for (i = 0; i <= ratio; i++){
             // add a new movie to the first avaible auditorium:
             // if we got -1 that mean we cannot add this movie.
             indexToAdd = returnAuditoriumLatestIndex();
             if (indexToAdd == -1){
-                System.out.format("Movie already added %d times out of maximum %d, no more avaible auditorium. Exiting", i, ratio);
+                System.out.format("Movie already added %d times out of maximum %d, no more available auditorium. Exiting", i, ratio);
                 return;
             }
+            // If we got here, we still have index we can add to the auditorium List:
+            System.out.format("Adding to auditorium number %d movie %d", indexToAdd, movieToAdd.getMovieName());
+            auditoriumArray[indexToAdd].setmovieDisplayed(movieToAdd);
         }
+        System.out.format("Done adding movies. added %d movies total. ", i);
+    }
 
+    public void updateMovie(String oldMovieName, Movie updatedMovie){
+        // Check if movie exist - if not, exit
+
+        int movieExistIndex = isMovieExist(oldMovieName);
+        if (movieExistIndex == -1){
+            System.out.format("Movie name %d does not exist in our DBs. Please try again! Exiting.... ", oldMovieName);
+            return;
+        }
+        // Movie exist. we need to update the movie list and update all relevant auditoriums.
+        moviesArray[movieExistIndex] = updatedMovie;
+        for (Auditorium auditorium : auditoriumArray) {
+            if (auditorium.getMovieDisplayed().movieName.equals(oldMovieName)){
+                System.out.println("Updated auditorium number " + auditorium.getAuditoriumNum());
+                auditorium.setmovieDisplayed(updatedMovie);
+            }
+        }
+        System.out.println("Done updating auditoriums. Exit... ");
+
+    }
+
+    public void addEmployee(Employee employee){
+        if (isEmployeeExist(employee)){ // check if employee already exist ...
+            System.out.println("Employee with the same ID already exist in our DBs. Exiting.... ");
+            return;
+        }
+        employeesList.add(employee);
+        System.out.println("Employee added successfully: " + employee.getName());
+    }
+
+    public boolean isEmployeeExist(Employee newEmployee){
+        for (Employee employee : employeesList) {
+            if (employee.equals(newEmployee)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -71,13 +112,19 @@ public class Cinema  {
 
     }
 
-    public boolean isMovieExist(String movieToCheck){
+    public int isMovieExist(String movieToCheck){
+        if (moviesArray[0] == null){ // check if there is movies. if not return -1 as false.
+            return -1;
+        }
+        int index = 0; // cant return index in forEach loop, but rather use it as more readable.
         for (Movie movie : moviesArray) {
             if (movie.movieName.equals(movieToCheck)){
-                return true;
+                return index;
             }
+            index++;
         }
-        return false;
+        // no movie found at the list. return -1 as false.
+        return -1;
     }
 
     public int returnAuditoriumLatestIndex(){
