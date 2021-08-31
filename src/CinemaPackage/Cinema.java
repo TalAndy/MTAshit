@@ -5,6 +5,9 @@ import People.Employee;
 import auditorium.Auditorium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Cinema  {
     String cinemaName;
@@ -13,6 +16,7 @@ public class Cinema  {
     Movie[] moviesArray;
     Auditorium[] auditoriumArray;
 
+    // Constructor
     public Cinema(String cinemaName, int moviesArrayLegnth, int auditoriumArrayLength) {
         this.cinemaName = cinemaName;
         this.employeesList = new ArrayList<Employee>();
@@ -82,7 +86,47 @@ public class Cinema  {
         System.out.println("Employee added successfully: " + employee.getName());
     }
 
+    public void removeEmployee(Employee employee){
+        for (Employee employeeFromList : employeesList) {
+            if(employeeFromList.equals(employee)){
+                employeesList.remove(employeeFromList);
+                System.out.println("Employee removed, exiting...");
+                return;
+            }
+        }
+        System.out.println("Employee doesn't exist! Exiting...");
+    }
+
+    public void randomTicketSell(){
+        // Generate a random customer index number:
+//        Random random = new Random();
+//        random.nextInt(customerList.size());
+        if (customerList.isEmpty()){
+            System.out.println("Customer List is empty! please try again later. Exiting...");
+            return;
+        }
+        if (employeesList.isEmpty()){
+            System.out.println("Employees List is empty! please try again later. Exiting...");
+            return;
+        }
+
+        Customer randomCustomer = customerList.get(ThreadLocalRandom.current().nextInt(customerList.size()));
+        Employee randomEmployee = employeesList.get(ThreadLocalRandom.current().nextInt(employeesList.size()));
+
+        ArrayList<Movie> movieArrayList =  new ArrayList<Movie>(Arrays.asList(moviesArray));
+
+//        Movie randomMovieChosen = randomCustomer.getRandomMovie(moviesArray);
+
+
+        for (Auditorium auditorium : auditoriumArray) {
+            auditorium.buyTicket(randomCustomer)
+        }
+
+
+    }
+
     public boolean isEmployeeExist(Employee newEmployee){
+
         for (Employee employee : employeesList) {
             if (employee.equals(newEmployee)){
                 return true;
@@ -90,7 +134,6 @@ public class Cinema  {
         }
         return false;
     }
-
 
     public int returnMovieLastIndex(){
         int index = 0;
@@ -149,11 +192,5 @@ public class Cinema  {
     public static long roundUp(long num, long divisor) {
         return (num + divisor - 1) / divisor;
     }
-
-
-
-
-
-
 
 }

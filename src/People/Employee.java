@@ -1,5 +1,6 @@
 package People;
 
+import Cinema.Order;
 import CinemaPackage.Movie;
 
 import java.util.Arrays;
@@ -30,10 +31,10 @@ public class Employee extends Customer{
         return 0;
     }
 
-    public String saleTicket(Customer customer, Movie movie){
+    public Order saleTicket(Customer customer, Movie movie){
         
-
-        return "0";
+        for movie.get
+        return ;
     }
 
     public double calcSalary(){
