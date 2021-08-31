@@ -4,17 +4,19 @@ import java.util.Objects;
 
 public class Order {
     String movieName;
-    int theaterNumber;
+    int auditoriumNum;
     int rowSeatNumber;
     int chairSeatRow;
     int ticketPrice;
 
-    public Order(String movieName, int theaterNumber, int rowSeatNumber, int chairSeatRow, int ticketPrice) {
+    public Order(String movieName, int auditoriumNum,int ticketPrice) {
         this.movieName = movieName;
-        this.theaterNumber = theaterNumber;
-        this.rowSeatNumber = rowSeatNumber;
-        this.chairSeatRow = chairSeatRow;
-        this.ticketPrice = ticketPrice;
+        this.auditoriumNum = auditoriumNum;
+        this.ticketPrice =ticketPrice;
+    }
+
+    public void Order(String movieName, int auditoriumNum, int rowSeatNumber, int chairSeatRow, int ticketPrice) {
+
     }
 
     public void setSeat(int rowSeatNumberAvailable,int chairSeatRowAvailable) {
@@ -26,7 +28,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "movieName='" + movieName + '\'' +
-                ", theaterNumber=" + theaterNumber +
+                ", theaterNumber=" + auditoriumNum +
                 ", rowSeatNumber=" + rowSeatNumber +
                 ", chairSeatRow=" + chairSeatRow +
                 ", ticketPrice=" + ticketPrice +
@@ -38,6 +40,6 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return theaterNumber == order.theaterNumber && rowSeatNumber == order.rowSeatNumber && chairSeatRow == order.chairSeatRow && ticketPrice == order.ticketPrice && Objects.equals(movieName, order.movieName);
+        return auditoriumNum == order.auditoriumNum && rowSeatNumber == order.rowSeatNumber && chairSeatRow == order.chairSeatRow && ticketPrice == order.ticketPrice && Objects.equals(movieName, order.movieName);
     }
 }

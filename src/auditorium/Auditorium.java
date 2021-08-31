@@ -4,16 +4,22 @@ import Cinema.Order;
 import CinemaPackage.Movie;
 import People.Customer;
 
-public class Auditorium {
+public abstract class  Auditorium {
     int auditoriumNum;
     Movie movieDisplayed;
     boolean[][] seatsArr;
 
-    public Auditorium(int auditoriumNum, Movie movieDisplayed, boolean[][] seatsArr) {
+
+    public Auditorium(int auditoriumNum, Movie movieDisplayed) {
         this.auditoriumNum = auditoriumNum;
         this.movieDisplayed = movieDisplayed;
     }
 
+    public abstract Order buyTicket(Customer customer);
+
+    public Auditorium(boolean[][] seatsArr) {
+        this.seatsArr = seatsArr;
+    }
 
     public Movie getMovieDisplayed() {
         return movieDisplayed;
@@ -52,4 +58,12 @@ public class Auditorium {
         return isFreeSeat;
     }
 
+    public void resetSeatsArr(boolean[][] arrayToReset)
+    {
+        for(int i = 0; i < arrayToReset.length; ++i) {
+            for(int j = 0; j < arrayToReset[0].length; ++j) {
+                arrayToReset[i][j] = false;
+            }
+        }
+    }
 }
