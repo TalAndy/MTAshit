@@ -7,7 +7,7 @@ public class Order {
     int auditoriumNum;
     int rowSeatNumber;
     int chairSeatRow;
-    int ticketPrice;
+    double ticketPrice;
 
     public Order(String movieName, int auditoriumNum,double ticketPrice) {
         this.movieName = movieName;

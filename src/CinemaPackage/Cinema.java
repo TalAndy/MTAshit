@@ -13,10 +13,10 @@ public class Cinema  {
     Movie[] moviesArray;
     Auditorium[] auditoriumArray;
 
-    public Cinema(String cinemaName, ArrayList<Employee>, int moviesArrayLegnth, int auditoriumArrayLength) {
+    public Cinema(String cinemaName, int moviesArrayLegnth, int auditoriumArrayLength) {
         this.cinemaName = cinemaName;
-        this.employeesList = new ArrayList<Employee>;
-        this.customerList = new ArrayList<Customer>;
+        this.employeesList = new ArrayList<Employee>();
+        this.customerList = new ArrayList<Customer>();
         this.moviesArray = new Movie[moviesArrayLegnth];
         this.auditoriumArray = new Auditorium[auditoriumArrayLength];
     }
@@ -46,7 +46,6 @@ public class Cinema  {
                 System.out.format("Movie already added %d times out of maximum %d, no more avaible auditorium. Exiting", i, ratio);
                 return;
             }
-
         }
 
     }
