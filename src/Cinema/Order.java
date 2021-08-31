@@ -9,11 +9,13 @@ public class Order {
     int chairSeatRow;
     double ticketPrice;
 
-    public Order(String movieName, int auditoriumNum,double ticketPrice) {
+    public Order(String movieName, int auditoriumNum,double ticketPrice,int rowSeatNumber,int chairSeatRow) {
         this.movieName = movieName;
         this.auditoriumNum = auditoriumNum;
         this.ticketPrice = ticketPrice;
-    }
+        this.rowSeatNumber = rowSeatNumber;
+        this.chairSeatRow= chairSeatRow;
+    }// new()
 
     public void Order(String movieName, int auditoriumNum, int rowSeatNumber, int chairSeatRow, int ticketPrice) {
 
