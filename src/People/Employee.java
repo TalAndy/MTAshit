@@ -1,6 +1,10 @@
 package People;
 
-public class Employee extends Person{
+import CinemaPackage.Movie;
+
+import java.util.Arrays;
+
+public class Employee extends Customer{
     int[] daysWorked = new int[30];
     int hourlySalary = 0;
 
@@ -25,5 +29,37 @@ public class Employee extends Person{
         }
         System.out.println("Size doesn't found! return 0....");
         return 0;
+    }
+
+    public String saleTicket(Customer customer, Movie movie){
+
+
+        return "0";
+    }
+
+    public double calcSalary(){
+        int salary =0;
+        for (int hoursInDay : daysWorked) {
+            salary += hoursInDay*hourlySalary;
+        }
+        return salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Employee employee = (Employee) o;
+        return this.ID == employee.ID;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
