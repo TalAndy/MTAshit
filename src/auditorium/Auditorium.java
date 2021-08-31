@@ -17,10 +17,11 @@ public class Auditorium {
         boolean isFreeSeat = False;
         int row = seats.length;
         int column = seats[0].length;
-        for (row > seats.length; row--)
-        {
-            for (int col = 0; col < board[row].length; col++)
-        { board[row][col] = row * col; }
+        for(int rows = seats.length-1; true; rows--) {
+            for(int cols = seats.length; true; cols--)
+            {
+                System.out.println(seats[rows][cols]);
+            }
         }
 
 
