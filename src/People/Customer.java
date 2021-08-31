@@ -5,13 +5,11 @@ import Cinema.Movie;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Customer extends Person {
+public class Customer extends Person implements ICustomer {
 
     public Customer(String name, int ID, String mailAddress, String phone, int age){
         super(name, ID, mailAddress, phone, age);
     }
-
-
 
     public Movie chooseMovie(ArrayList<Movie> moviesList){
         if (moviesList.isEmpty()){

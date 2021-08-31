@@ -8,7 +8,6 @@ public class Employee extends Customer{
     int[] daysWorked = new int[30];
     int hourlySalary = 0;
 
-
     public Employee(String name, int ID, String mailAddress, String phone, int age) {
         super(name, ID, mailAddress, phone, age);
     }
@@ -62,4 +61,6 @@ public class Employee extends Customer{
                 ", age=" + age +
                 '}';
     }
+
+
 }
