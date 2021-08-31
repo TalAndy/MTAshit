@@ -28,8 +28,4 @@ public class Employee extends Person{
         System.out.println("Size doesn't found! return 0....");
         return 0;
     }
-
-    public Order
-    public String
-
 }
