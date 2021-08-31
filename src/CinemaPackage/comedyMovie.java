@@ -1,5 +1,7 @@
 package CinemaPackage;
 
+import People.Customer;
+
 public class comedyMovie extends Movie{
 
     public comedyMovie(String movieName, int duration) {

@@ -1,5 +1,7 @@
 package CinemaPackage;
 
+import People.Customer;
+
 public abstract class Movie {
 
     String movieName;

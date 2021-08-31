@@ -18,7 +18,7 @@ public class Cinema  {
     public boolean freeSeat(boolean[][] seats)
     {
 
-        boolean isFreeSeat = False;
+        boolean isFreeSeat = false;
         int row = seats.length;
         int column = seats[0].length;
 

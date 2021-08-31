@@ -31,7 +31,7 @@ public class Employee extends Customer{
     }
 
     public String saleTicket(Customer customer, Movie movie){
-
+        
 
         return "0";
     }

@@ -1,5 +1,7 @@
 package CinemaPackage;
 
+import People.Customer;
+
 public class horrorMovie extends Movie {
 
 
@@ -8,6 +10,6 @@ public class horrorMovie extends Movie {
     }
 
     public boolean viewRestriction(Customer customer){
-        return customer.age >= 18;
+        return customer.getAge() >= 18;
     }
 }
