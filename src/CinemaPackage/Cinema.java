@@ -23,15 +23,31 @@ public class Cinema  {
 
     public void addNewMovie(Movie movieToAdd){
 
-        // Add to check if movie is exist
-
-        int avaiavailableMovieIndex = returnMovieLastIndex();
-
-        if (avaiavailableMovieIndex == -1){
-            System.out.println("Movie array is full! please delete a movie and try to add a movie again, later. EXITING...");
+        // Check if movie exist in our DBs.
+        if(isMovieExist(movieToAdd.movieName)){
+            System.out.println("Movie already exist, nothing to add. Exiting....");
             return;
         }
-        // need to add movie to audt
+        // get the latest available index in the movie list.
+        int availableMovieIndex = returnMovieLastIndex();
+
+        if (availableMovieIndex == -1){
+            System.out.println("Movie array is full! please delete a movie and try to add a movie again, later. Exiting...");
+            return;
+        }
+        //
+        long ratio = roundUp(moviesArray.length, auditoriumArray.length);
+        int indexToAdd = -1;
+        for (int i = 0; i <= ratio; i++){
+            // add a new movie to the first avaible auditorium:
+            // if we got -1 that mean we cannot add this movie.
+            indexToAdd = returnAuditoriumLatestIndex();
+            if (indexToAdd == -1){
+                System.out.format("Movie already added %d times out of maximum %d, no more avaible auditorium. Exiting", i, ratio);
+                return;
+            }
+
+        }
 
     }
 
@@ -56,8 +72,36 @@ public class Cinema  {
 
     }
 
-    public int returnAuditoriumLatestIndex(){
+    public boolean isMovieExist(String movieToCheck){
+        for (Movie movie : moviesArray) {
+            if (movie.movieName.equals(movieToCheck)){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public int returnAuditoriumLatestIndex(){
+        int index = 0;
+
+        // If the list is empty return 0 as first index available
+        if (auditoriumArray[0] == null){
+            return 0;
+        }
+        // // Search and return the first auditorium without movie name
+        for (Auditorium auditorium : auditoriumArray) {
+            if (auditorium.getMovieDisplayed().movieName.equals("")){
+                return index;
+            }
+            index++;
+        }
+
+        // All the auditorium in our auditorium array has movies name, which means there is no availble auditorium. return -1 as false
+        return -1;
+    }
+
+    public static long roundUp(long num, long divisor) {
+        return (num + divisor - 1) / divisor;
     }
 
 

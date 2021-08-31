@@ -16,9 +16,9 @@ public class SmallAuditorium extends Auditorium {
     @Override
     public Order buyTicket(Customer customer) {
         Order order = new Order(this.movieDisplayed.getMovieName(),this.auditoriumNum,customer.checkForDiscount(30));
-        getMovieDisplayed(move)
+//        getMovieDisplayed(move);
 
-        return Order;
+        return order;
     }
 
 
