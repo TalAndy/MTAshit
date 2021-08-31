@@ -7,11 +7,11 @@ import People.Customer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BigAuditorium extends Auditorium {
+public class VipAuditorium extends Auditorium {
 
-    public BigAuditorium(int auditoriumNum, Movie movieDisplayed) {
+    public VipAuditorium(int auditoriumNum, Movie movieDisplayed) {
         super(auditoriumNum, movieDisplayed);
-        boolean[][] seatsArr = new boolean[16][20];
+        boolean[][] seatsArr = new boolean[8][12];
         resetSeatsArr(seatsArr);
         this.seatsArr = seatsArr;
 
@@ -23,7 +23,7 @@ public class BigAuditorium extends Auditorium {
         Order order = null;
         int rowSeatNumberAvailable;
         int chairSeatRow;
-        int priceTicket = 42;
+        int priceTicket = 67;
 
         //If there is no available seats at the movie
         if(seat.isEmpty())

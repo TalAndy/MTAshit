@@ -23,6 +23,9 @@ public abstract class  Auditorium {
 
     public abstract Order buyTicket(Customer customer);
 
+    public abstract void updateMovie(Movie movie);
+
+
     public Auditorium(boolean[][] seatsArr) {
         this.seatsArr = seatsArr;
     }
@@ -35,7 +38,7 @@ public abstract class  Auditorium {
         this.movieDisplayed = movieDisplayed;
     }
 
-    public ArrayList<Integer> getFreeSeat(boolean[][] auditoriumSeats)
+    public ArrayList<Integer> checkFreeSeats(boolean[][] auditoriumSeats)
     {
         //We can assume auditoriumSeats[][] is not null because we are initialized at the contractors
         ArrayList<Integer> seat= new ArrayList<Integer>(2);
