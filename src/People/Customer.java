@@ -1,4 +1,6 @@
-package Cinema;
+package People;
+
+import Cinema.Movie;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,10 +29,7 @@ public class Customer extends Person {
         return getRandomMovie(moviesList);
     }
 
-
-
-    public Movie getRandomMovie(ArrayList<Movie> moviesList)
-    {
+    public Movie getRandomMovie(ArrayList<Movie> moviesList) {
         // we assume we have at least 1 movie in list, so before entering the loop
         Random rand = new Random();
         Movie randomMovie = moviesList.get(rand.nextInt(moviesList.size()));

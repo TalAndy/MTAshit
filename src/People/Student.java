@@ -1,4 +1,4 @@
-package Cinema;
+package People;
 
 public class Student extends Customer{
     String academicInstitution;

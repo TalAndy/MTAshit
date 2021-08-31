@@ -1,8 +1,10 @@
 package Cinema;
 
+import People.Customer;
+
 public class Movie {
     String movieName;
-    int viewRestriction;
+    public int viewRestriction;
     int duration;
     String genre;
 
