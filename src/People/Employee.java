@@ -18,13 +18,13 @@ public class Employee extends Customer{
         int meduim = 30;
         int large = 40;
 
-        if (size.equals("small")){
+        if (size.equals("Small")){
             return customer.checkForDiscount(small);
         }
-        if (size.equals("meduim")){
+        if (size.equals("Medium")){
             return customer.checkForDiscount(meduim);
         }
-        if (size.equals("large")){
+        if (size.equals("Large")){
             return customer.checkForDiscount(large);
         }
         System.out.println("Size doesn't found! return 0....");
@@ -32,9 +32,8 @@ public class Employee extends Customer{
     }
 
     public Order saleTicket(Customer customer, Movie movie){
-        
-        for movie.get
-        return ;
+
+
     }
 
     public double calcSalary(){

@@ -15,9 +15,9 @@ public class Order {
         this.ticketPrice = ticketPrice;
         this.rowSeatNumber = rowSeatNumber;
         this.chairSeatRow= chairSeatRow;
-    }// new()
+    }
 
-    public void Order(String movieName, int auditoriumNum, int rowSeatNumber, int chairSeatRow, int ticketPrice) {
+    public Order(){
 
     }
 

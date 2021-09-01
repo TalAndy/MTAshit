@@ -4,11 +4,9 @@ import People.Customer;
 import People.Employee;
 import auditorium.Auditorium;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import Cinema.Order;
 
 public class Cinema  {
     String cinemaName;
@@ -115,20 +113,57 @@ public class Cinema  {
         Employee randomEmployee = employeesList.get(ThreadLocalRandom.current().nextInt(employeesList.size()));
 
         ArrayList<Movie> movieArrayList =  new ArrayList<Movie>();
-//        Collections.addAll(movieArrayList, moviesArray);
-        for (Movie movie : moviesArray) {
-            movieArrayList.add(movie);
-        }
-
-
+        movieArrayList.addAll(Arrays.asList(moviesArray));
         Movie randomMovieChosen = randomCustomer.getRandomMovie(movieArrayList);
-
-
+        Order newOrder = new Order();
         for (Auditorium auditorium : auditoriumArray) {
-            auditorium.buyTicket(randomCustomer);
+            if (auditorium.getMovieDisplayed().equals(randomMovieChosen)){
+                newOrder = auditorium.buyTicket(randomCustomer);
+                if (newOrder != null){
+                    // Found a movie and succeeded to buy a ticket.
+                    System.out.println("Ticket purchased! Order details: " + newOrder.toString());
+                    System.out.println("Customer details: " + randomCustomer.toString());
+                    System.out.println("Employee details: " + randomEmployee.toString());
+                    System.out.println("Exiting the selling system...");
+                    return;
+                }
+                System.out.println("Found a movie but couldnt find tickets. sorry! aud number: " + auditorium.getAuditoriumNum());
+            }
+        }
+        System.out.println("Couldn't buy any tickets. movie not found - please try again later. movie name: " + randomMovieChosen.getMovieName());
+    }
+
+    public void randomPopcornSell(){
+        if (customerList.isEmpty()){
+            System.out.println("Customer List is empty! please try again later. Exiting...");
+            return;
+        }
+        if (employeesList.isEmpty()){
+            System.out.println("Employees List is empty! please try again later. Exiting...");
+            return;
         }
 
+        Customer randomCustomer = customerList.get(ThreadLocalRandom.current().nextInt(customerList.size()));
+        Employee randomEmployee = employeesList.get(ThreadLocalRandom.current().nextInt(employeesList.size()));
+        String[] menuList = {"large", "meduim", "small"};
+        Random random = new Random();
+        random.nextInt(menuList.length);
+        String randomPopcorn = randomCustomer.randomPopcorn();
+        double priceSold = randomEmployee.salePopcorn(randomPopcorn, randomCustomer);
+        System.out.println("Popcorn sold! size randomized: " + randomPopcorn + " to the happy customer " + randomCustomer.toString() + " and was made by the awesome worked " + randomEmployee.toString());
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cinema cinema = (Cinema) o;
+        return Objects.equals(cinemaName, cinema.cinemaName);
+    }
+
+    @Override
+    public String toString() {
+        return "Movie name is: " + this.cinemaName + " our number of employes is: " + employeesList.size() + " and our number of loyal customers is: " + customerList.size();
     }
 
     public boolean isEmployeeExist(Employee newEmployee){
