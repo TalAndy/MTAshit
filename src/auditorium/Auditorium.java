@@ -6,6 +6,7 @@ import People.Customer;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class  Auditorium {
     int auditoriumNum;
@@ -14,6 +15,10 @@ public abstract class  Auditorium {
 
     public int getAuditoriumNum() {
         return auditoriumNum;
+    }
+
+    public Movie getMovieDisplayed() {
+        return movieDisplayed;
     }
 
     public Auditorium(int auditoriumNum, Movie movieDisplayed) {
@@ -25,14 +30,10 @@ public abstract class  Auditorium {
 
     public abstract void updateMovie(Movie movie);
 
-
     public Auditorium(boolean[][] seatsArr) {
         this.seatsArr = seatsArr;
     }
 
-    public Movie getMovieDisplayed() {
-        return movieDisplayed;
-    }
 
     public void setMovieDisplayed(Movie movieDisplayed) {
         this.movieDisplayed = movieDisplayed;
@@ -76,5 +77,14 @@ public abstract class  Auditorium {
 
     public void setmovieDisplayed(Movie newMovie){
         this.movieDisplayed = newMovie;
+    }
+
+    @Override
+    public String toString() {
+        return "Auditorium{" +
+                "auditoriumNum=" + auditoriumNum +
+                ", movieDisplayed=" + movieDisplayed +
+                ", seatsArr=" + Arrays.toString(seatsArr) +
+                '}';
     }
 }

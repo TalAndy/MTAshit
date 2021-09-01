@@ -29,6 +29,7 @@ public class VipAuditorium extends Auditorium {
         if(seat.isEmpty())
         {
             System.out.println("We are sorry, all seats at the movie unavailable");
+            return null;
 
         }
         else

@@ -14,7 +14,6 @@ public class SmallAuditorium extends Auditorium {
         boolean[][] seatsArr = new boolean[8][10];
         resetSeatsArr(seatsArr);
         this.seatsArr = seatsArr;
-
     }
 
     @Override
@@ -29,6 +28,7 @@ public class SmallAuditorium extends Auditorium {
         if(seat.isEmpty())
         {
             System.out.println("We are sorry, all seats at the movie unavailable");
+            return null;
 
         }
         else
