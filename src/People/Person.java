@@ -1,6 +1,6 @@
 package People;
 
-public class Person {
+public abstract class Person {
     String name;
     int ID;
     String mailAddress;

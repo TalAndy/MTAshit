@@ -36,14 +36,16 @@ public abstract class  Auditorium {
 
     public abstract void updateMovie(Movie movie);
 
+
     public Auditorium(boolean[][] seatsArr) {
         this.seatsArr = seatsArr;
     }
 
-
     public void setMovieDisplayed(Movie movieDisplayed) {
         this.movieDisplayed = movieDisplayed;
     }
+
+
 
     public ArrayList<Integer> checkFreeSeats(boolean[][] auditoriumSeats)
     {
@@ -83,6 +85,10 @@ public abstract class  Auditorium {
 
     public void setmovieDisplayed(Movie newMovie){
         this.movieDisplayed = newMovie;
+    }
+
+    public boolean equals(Movie movieToCheck) {
+        return movieToCheck.equals(this.getMovieDisplayed());
     }
 
     @Override

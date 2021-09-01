@@ -55,8 +55,6 @@ public class Customer extends Person implements ICustomer {
         return price;
     }
 
-
-
 }
 
 

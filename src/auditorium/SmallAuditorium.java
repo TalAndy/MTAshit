@@ -30,7 +30,6 @@ public class SmallAuditorium extends Auditorium {
         {
             System.out.println("We are sorry, all seats at the movie unavailable");
             return null;
-
         }
         else
         {
@@ -39,8 +38,6 @@ public class SmallAuditorium extends Auditorium {
             //Create order object
             order = new Order(this.movieDisplayed.getMovieName(),this.auditoriumNum,customer.checkForDiscount(priceTicket), rowSeatNumberAvailable,chairSeatRow);
         }
-
-
         return order;
     }
 

@@ -17,9 +17,10 @@ public class Order {
         this.chairSeatRow= chairSeatRow;
     }
 
-    public Order(){
+    public Order() {
 
     }
+
 
     public void setSeat(int rowSeatNumberAvailable,int chairSeatRowAvailable) {
         this.rowSeatNumber = rowSeatNumberAvailable;

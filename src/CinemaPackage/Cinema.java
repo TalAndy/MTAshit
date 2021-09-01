@@ -40,8 +40,6 @@ public class Cinema  {
         }
     }
 
-
-
     public void addNewMovie(Movie movieToAdd){
         // Check if movie exist in our DBs. -1 for false, otherwise true
         if(isMovieExist(movieToAdd.movieName) != -1){

@@ -2,7 +2,10 @@ package People;
 
 import Cinema.Order;
 import CinemaPackage.Movie;
+import CinemaPackage.thrillMovie;
+import auditorium.Auditorium;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Employee extends Customer{
@@ -31,9 +34,34 @@ public class Employee extends Customer{
         return 0;
     }
 
-    public Order saleTicket(Customer customer, Movie movie){
 
-    return null;
+    public Order saleTicket(Customer customer, Movie movie,Auditorium[] auditorium)
+    {
+        Customer customerWantBuyTicket = new Customer;
+        String movieName = movie.getMovieName();
+        int auditoriumNum = -1;
+        boolean movieFound = false;
+        Order newOrder = null;
+        int index=0;
+
+        for (index=0;index<auditorium.length;index++)
+        {
+            if(auditorium[index].equals(movie))
+            {
+                auditoriumNum = auditorium[index].getAuditoriumNum();
+
+            }
+        }
+
+        //Its mean movie not found
+        if(auditoriumNum == -1)
+        {
+            System.out.println("We are sorry the movie is not found");
+            return null;
+        }
+
+        newOrder = auditorium[index].buyTicket(customerWantBuyTicket);
+        return newOrder;
     }
 
     public double calcSalary(){
@@ -43,7 +71,6 @@ public class Employee extends Customer{
         }
         return salary;
     }
-
 
     @Override
     public boolean equals(Object o) {

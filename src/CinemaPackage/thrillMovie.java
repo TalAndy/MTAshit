@@ -11,5 +11,4 @@ public class thrillMovie extends Movie {
         return customer.getAge() >= 16;
     }
 
-
 }
