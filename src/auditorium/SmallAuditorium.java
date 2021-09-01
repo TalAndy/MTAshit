@@ -16,7 +16,6 @@ public class SmallAuditorium extends Auditorium {
         this.seatsArr = seatsArr;
     }
 
-
     @Override
     public Order buyTicket(Customer customer) {
         ArrayList<Integer> seat = checkFreeSeats(this.seatsArr);

@@ -43,42 +43,41 @@ public class main {
 
 
 
-//        ArrayList<Employee> employeeList  = new ArrayList<>();
+//        ArrayList<Employee> employeeList  = new ArrayList<Movie>();
 //        employeeList.add(employee1);
 //        employeeList.add(employee2);
 //        employeeList.add(employee3);
 //        employeeList.add(employee4);
 //        employeeList.add(employee5);
-
+//
 //        System.out.println("Employees list contains " + employeeList.size() + "employees");
 //        System.out.println("and those are the following employees: ");
 //        for (Employee employee : employeeList) {
 //            System.out.print(employee.getName() + " ");
 //        }
 
-        //Create new movie
-//        Movie movieC1 = new comedyMovie("lifeByTal",140);
-//        Movie movieC2 = new comedyMovie("thePrince",113);
-//        Movie movieH1 = new horrorMovie("killTal",100);
-//        Movie movieH2 = new horrorMovie("codeWithUs",110);
-//        Movie movieT1 = new thrillMovie("run",98);
-//        Movie movieT2 = new thrillMovie("talAtTheNight",109);
-//        ArrayList<Movie> movieList  = new ArrayList<>();
-//        movieList.add(movieC1);
-//        movieList.add(movieC2);
-//        movieList.add(movieH1);
-//        movieList.add(movieH2);
-//        movieList.add(movieT1);
-//        movieList.add(movieT2);
-//        System.out.println("\nWe currently have " + movieList.size() + " in our catalog. the movies names are: ");
-//        for (Movie movie : movieList) {
-//            System.out.println("The " + movie.getGenre() + " movie: " + movie.getMovieName());
-//        }
-//
-//        for (Movie movie : movieList) {
-//            System.out.println("Adding movie: " + movie.getMovieName() + " to the movies list");
-//            newCinema.addNewMovie(movie);
-//        }
+        Movie movieC1 = new comedyMovie("lifeByTal",140);
+        Movie movieC2 = new comedyMovie("thePrince",113);
+        Movie movieH1 = new horrorMovie("killTal",100);
+        Movie movieH2 = new horrorMovie("codeWithUs",110);
+        Movie movieT1 = new thrillMovie("run",98);
+        Movie movieT2 = new thrillMovie("talAtTheNight",109);
+        ArrayList<Movie> movieList  = new ArrayList<>();
+        movieList.add(movieC1);
+        movieList.add(movieC2);
+        movieList.add(movieH1);
+        movieList.add(movieH2);
+        movieList.add(movieT1);
+        movieList.add(movieT2);
+        System.out.println("\nWe currently have " + movieList.size() + " in our catalog. the movies names are: ");
+        for (Movie movie : movieList) {
+            System.out.println("The " + movie.getGenre() + " movie: " + movie.getMovieName());
+        }
+
+        for (Movie movie : movieList) {
+            System.out.println("Adding movie: " + movie.getMovieName() + " to the movies list");
+            newCinema.addNewMovie(movie);
+        }
 
         System.out.println("Done adding movies!");
         Auditorium[] auditoriumArray = newCinema.getAuditoriumArray();

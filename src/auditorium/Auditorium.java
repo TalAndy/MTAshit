@@ -47,6 +47,27 @@ public abstract class  Auditorium {
 
 
 
+    public int numOfFreeSeats(boolean[][] auditoriumSeats)
+    {
+        boolean free = false;
+        int counter = 0;
+        int row;
+        int column;
+
+        //Iterate off all seats for count num of free seats
+        for (row = auditoriumSeats.length-1;row >=0; row--) {
+            for(column = auditoriumSeats.length;column>=0; column--)
+            {
+                //If there is a free seat set count it
+                if(auditoriumSeats[row][column])
+                {
+                    counter += 1;
+                }
+            }
+        }
+        return counter;
+    }
+
     public ArrayList<Integer> checkFreeSeats(boolean[][] auditoriumSeats)
     {
         //We can assume auditoriumSeats[][] is not null because we are initialized at the contractors

@@ -37,7 +37,7 @@ public class Employee extends Customer{
 
     public Order saleTicket(Customer customer, Movie movie,Auditorium[] auditorium)
     {
-        Customer customerWantBuyTicket = new Customer;
+
         String movieName = movie.getMovieName();
         int auditoriumNum = -1;
         boolean movieFound = false;
@@ -49,7 +49,6 @@ public class Employee extends Customer{
             if(auditorium[index].equals(movie))
             {
                 auditoriumNum = auditorium[index].getAuditoriumNum();
-
             }
         }
 
@@ -60,7 +59,7 @@ public class Employee extends Customer{
             return null;
         }
 
-        newOrder = auditorium[index].buyTicket(customerWantBuyTicket);
+        newOrder = auditorium[index].buyTicket(customer);
         return newOrder;
     }
 
