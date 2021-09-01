@@ -28,14 +28,18 @@ public class Cinema  {
 
         // initialize the auditoriumArray
         for (int i =0; i < auditoriumArrayLength; i++){
-            int randomNum = ThreadLocalRandom.current().nextInt(0, 2);
-            switch (randomNum){
-                case 0:
-                    this.auditoriumArray[i] = new SmallAuditorium(i);
-                case 1:
-                    this.auditoriumArray[i] = new BigAuditorium(i);
-                case 2:
-                    this.auditoriumArray[i] = new VipAuditorium(i);
+//            int randomNum = ThreadLocalRandom.current().nextInt(0, 2);
+            Random r = new Random();
+            int Result = r.nextInt(3);
+            if (Result == 0) {
+                System.out.println("Creating Auditorium small in run index" + i);
+                this.auditoriumArray[i] = new SmallAuditorium(i);
+            } else if (Result == 1) {
+                System.out.println("Creating Auditorium big in run index" + i);
+                this.auditoriumArray[i] = new BigAuditorium(i);
+            } else if (Result == 2) {
+                System.out.println("Creating Auditorium vup in run index" + i);
+                this.auditoriumArray[i] = new VipAuditorium(i);
             }
         }
     }
@@ -77,15 +81,18 @@ public class Cinema  {
 
         int movieExistIndex = isMovieExist(oldMovieName);
         if (movieExistIndex == -1){
-            System.out.format("Movie name %d does not exist in our DBs. Please try again! Exiting.... ", oldMovieName);
+            System.out.println("Movie name" + oldMovieName + " does not exist in our DBs. Please try again! Exiting.... ");
             return;
         }
         // Movie exist. we need to update the movie list and update all relevant auditoriums.
         moviesArray[movieExistIndex] = updatedMovie;
         for (Auditorium auditorium : auditoriumArray) {
+            if (auditorium.getMovieDisplayed() != null){
+
             if (auditorium.getMovieDisplayed().movieName.equals(oldMovieName)){
                 System.out.println("Updated auditorium number " + auditorium.getAuditoriumNum());
                 auditorium.setmovieDisplayed(updatedMovie);
+                }
             }
         }
         System.out.println("Done updating auditoriums. Exit... ");
@@ -99,6 +106,15 @@ public class Cinema  {
         }
         employeesList.add(employee);
         System.out.println("Employee added successfully: " + employee.getName());
+    }
+
+    public void addCustomer(Customer customer){
+        if (isCustomerExist(customer)){ // check if employee already exist ...
+            System.out.println("Customer with the same ID already exist in our DBs. Exiting.... ");
+            return;
+        }
+        customerList.add(customer);
+        System.out.println("Customer added successfully: " + customer.getName());
     }
 
     public void removeEmployee(Employee employee){
@@ -192,15 +208,25 @@ public class Cinema  {
         return false;
     }
 
+    public boolean isCustomerExist(Customer newCustomer){
+
+        for (Customer customer : customerList) {
+            if (customer.equals(newCustomer)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int returnMovieLastIndex(){
         int index = 0;
         // If the list is empty return 0 as first index available
-        if (moviesArray[0] == null){
+        if (this.moviesArray[0] == null){
             return 0;
         }
 
         // Search for the first null appearance
-        for (Movie movie : moviesArray) {
+        for (Movie movie : this.moviesArray) {
             if (movie == null){
                 return index;
             }
@@ -213,17 +239,24 @@ public class Cinema  {
     }
 
     public int isMovieExist(String movieToCheck){
-        if (moviesArray[0] == null){ // check if there is movies. if not return -1 as false.
-            return -1;
+        if (this.moviesArray[0] == null){ // check if there is movies. if not return -1 as false.
+            System.out.println("movie list is empty - exiting...");
+            return 0;
         }
         int index = 0; // cant return index in forEach loop, but rather use it as more readable.
-        for (Movie movie : moviesArray) {
+        for (Movie movie : this.moviesArray) {
+//            if (movie == null){
+//                System.out.println("movie list is empty - exiting...");
+//                return -1;
+//            }
             if (movie.movieName.equals(movieToCheck)){
                 return index;
             }
             index++;
         }
         // no movie found at the list. return -1 as false.
+        System.out.println("didnt find any movie - exiting...");
+
         return -1;
     }
 
@@ -243,7 +276,7 @@ public class Cinema  {
 //        }
 
         for (int i = 0; i < auditoriumArray.length; i++){
-            System.out.println("i = " + i);
+//            System.out.println("i = " + i);
             if (auditoriumArray[i].getMovieDisplayed()==null){
                 return i;
             }

@@ -10,23 +10,33 @@ import java.util.Arrays;
 
 public class main {
     public static void main(String[] args) {
-        System.out.println("Welcome To Badli and Endelman Theater! ");
-        Cinema newCinema = new Cinema("YesPlant Holon", 6, 14);
 
-        //Create new employees
+        /*
+        יש ליצור אובייקט של בית קולנוע עם פרמטרים לבחירתכם.
+         לאחר מכן יש לבצע הוספת סרטים (לפחות אחד מכל סוג), הוספת לקוחות (לפחות אחד מכל סוג) והוספת עובדים.
+        הדפיסו את פרטי בית הקולנוע. בצעו 3 פעולות של רכישת כרטיסים, 3 פעולות מכירת פופקורן ועדכון סרט אחד חדש לבחירתכם.
+         */
+        System.out.println("Welcome To Badli and Endelman Theater! ");
+        Cinema yesPlanetFrishman = new Cinema("YesPlant Frishman", 6, 14);
+
+        // Create new employees
         Employee employee1 = new Employee("peleg", 18, "peleg@tomer.com", "2456", 19);
         Employee employee2 = new Employee("neta", 19, "neta@tomer.com", "2456", 22);
         Employee employee3 = new Employee("shmulik", 20, "shmulik@tomer.com", "2456", 18);
         Employee employee4 = new Employee("barel", 21,"barel@tomer.com", "2456", 23);
         Employee employee5 = new Employee("tal", 22, "tal@tomer.com", "2456", 16);
-        newCinema.addEmployee(employee1);
-        newCinema.addEmployee(employee2);
-        newCinema.addEmployee(employee3);
-        newCinema.addEmployee(employee4);
-        newCinema.addEmployee(employee5);
+        yesPlanetFrishman.addEmployee(employee1);
+        yesPlanetFrishman.addEmployee(employee2);
+        yesPlanetFrishman.addEmployee(employee3);
+        yesPlanetFrishman.addEmployee(employee4);
+        yesPlanetFrishman.addEmployee(employee5);
 
-        //Add employee to cinema
-        System.out.println(newCinema.toString());
+        // Should failed - cannot add employee that already exist in our system
+        yesPlanetFrishman.addEmployee(employee1);
+
+        // We have 5 employees so far
+        System.out.println("Current status:");
+        System.out.println(yesPlanetFrishman.toString());
 
         Customer customer1 = new Customer("tal", 10, "tal", "0514253647", 23);
         Customer customer2 = new Customer("niv", 11, "tal", "0523699857", 24);
@@ -37,24 +47,20 @@ public class main {
         Student omri = new Student("Omri", 16, "tal", "0123", 25, "5.4.20", "1.8.22");
         Pensioner shira = new Pensioner("shira",17, "shira@gmail.com","0738446253",62);
 
-        newCinema.
+        yesPlanetFrishman.addCustomer(customer1);
+        yesPlanetFrishman.addCustomer(customer2);
+        yesPlanetFrishman.addCustomer(customer3);
+        yesPlanetFrishman.addCustomer(customer4);
+        yesPlanetFrishman.addCustomer(customer5);
+        yesPlanetFrishman.addCustomer(niv);
+        yesPlanetFrishman.addCustomer(omri);
+        yesPlanetFrishman.addCustomer(shira);
+        // Should failed
+        yesPlanetFrishman.addCustomer(niv);
 
-
-
-
-
-//        ArrayList<Employee> employeeList  = new ArrayList<Movie>();
-//        employeeList.add(employee1);
-//        employeeList.add(employee2);
-//        employeeList.add(employee3);
-//        employeeList.add(employee4);
-//        employeeList.add(employee5);
-//
-//        System.out.println("Employees list contains " + employeeList.size() + "employees");
-//        System.out.println("and those are the following employees: ");
-//        for (Employee employee : employeeList) {
-//            System.out.print(employee.getName() + " ");
-//        }
+        // We have 5 employees and 8 customers so far
+        System.out.println("Current status:");
+        System.out.println(yesPlanetFrishman.toString());
 
         Movie movieC1 = new comedyMovie("lifeByTal",140);
         Movie movieC2 = new comedyMovie("thePrince",113);
@@ -69,30 +75,35 @@ public class main {
         movieList.add(movieH2);
         movieList.add(movieT1);
         movieList.add(movieT2);
-        System.out.println("\nWe currently have " + movieList.size() + " in our catalog. the movies names are: ");
+
+        System.out.println("\n We currently have " + movieList.size() + " in our catalog. the movies names are: ");
         for (Movie movie : movieList) {
             System.out.println("The " + movie.getGenre() + " movie: " + movie.getMovieName());
         }
 
         for (Movie movie : movieList) {
             System.out.println("Adding movie: " + movie.getMovieName() + " to the movies list");
-            newCinema.addNewMovie(movie);
+            yesPlanetFrishman.addNewMovie(movie);
         }
 
         System.out.println("Done adding movies!");
-        Auditorium[] auditoriumArray = newCinema.getAuditoriumArray();
+        Auditorium[] auditoriumArray = yesPlanetFrishman.getAuditoriumArray();
         for (Auditorium auditorium : auditoriumArray) {
             if (auditorium.getMovieDisplayed()==null)
             {
-                System.out.println("Auditorium number " + auditorium.getAuditoriumNum() + " plays no movie because we dont have.");
+                System.out.println("Auditorium number " + auditorium.getAuditoriumNum() + " plays no movie because we dont have any movies to present.");
             }
             else{
-            System.out.println("Auditorium number " + auditorium.getAuditoriumNum() + " plays movie " + auditorium.getMovieDisplayed().getMovieName());
+            System.out.println("Auditorium " + auditorium.getAuditoriumNum() + " size " + auditorium.getClass() + " plays movie " + auditorium.getMovieDisplayed().getMovieName());
         }
     }
-        //Create new Cinema
-        Cinema yesBadli = new Cinema("yesBadli",movieList.size(),auditoriumArray.length);
-        System.out.println(yesBadli.toString());
+
+//        yesPlanetFrishman.randomTicketSell();
+        yesPlanetFrishman.randomPopcornSell();
+        yesPlanetFrishman.randomPopcornSell();
+        yesPlanetFrishman.randomPopcornSell();
+        Movie newHorrorMovie = new horrorMovie("nivCodingJava",109);
+        yesPlanetFrishman.updateMovie("lifeByTal", newHorrorMovie);
 
 
 
@@ -100,13 +111,6 @@ public class main {
 
 
 
-
-//        System.out.println();
-//        System.out.println("The popcorn price is");
-//
-
-
-
-}
+    }
 }
 
