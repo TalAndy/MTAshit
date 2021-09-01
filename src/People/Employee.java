@@ -33,7 +33,7 @@ public class Employee extends Customer{
 
     public Order saleTicket(Customer customer, Movie movie){
 
-
+    return null;
     }
 
     public double calcSalary(){
@@ -43,7 +43,6 @@ public class Employee extends Customer{
         }
         return salary;
     }
-
 
 
     @Override

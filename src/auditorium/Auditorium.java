@@ -7,11 +7,17 @@ import People.Customer;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class  Auditorium {
     int auditoriumNum;
     Movie movieDisplayed;
     boolean[][] seatsArr;
+
+    public Auditorium(int auditoriumNum) {
+        this.auditoriumNum = auditoriumNum;
+    }
 
     public int getAuditoriumNum() {
         return auditoriumNum;

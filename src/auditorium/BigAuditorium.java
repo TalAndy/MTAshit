@@ -9,12 +9,11 @@ import java.util.Arrays;
 
 public class BigAuditorium extends Auditorium {
 
-    public BigAuditorium(int auditoriumNum, Movie movieDisplayed) {
-        super(auditoriumNum, movieDisplayed);
+    public BigAuditorium(int auditoriumNum) {
+        super(auditoriumNum);
         boolean[][] seatsArr = new boolean[16][20];
         resetSeatsArr(seatsArr);
         this.seatsArr = seatsArr;
-
     }
 
     @Override

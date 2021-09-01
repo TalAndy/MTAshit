@@ -7,6 +7,9 @@ import auditorium.Auditorium;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import Cinema.Order;
+import auditorium.BigAuditorium;
+import auditorium.SmallAuditorium;
+import auditorium.VipAuditorium;
 
 public class Cinema  {
     String cinemaName;
@@ -22,6 +25,19 @@ public class Cinema  {
         this.customerList = new ArrayList<Customer>();
         this.moviesArray = new Movie[moviesArrayLegnth];
         this.auditoriumArray = new Auditorium[auditoriumArrayLength];
+
+        // initialize the auditoriumArray
+        for (int i =0; i < auditoriumArrayLength; i++){
+            int randomNum = ThreadLocalRandom.current().nextInt(0, 2);
+            switch (randomNum){
+                case 0:
+                    this.auditoriumArray[i] = new SmallAuditorium(i);
+                case 1:
+                    this.auditoriumArray[i] = new BigAuditorium(i);
+                case 2:
+                    this.auditoriumArray[i] = new VipAuditorium(i);
+            }
+        }
     }
 
 
@@ -48,14 +64,14 @@ public class Cinema  {
             // if we got -1 that mean we cannot add this movie.
             indexToAdd = returnAuditoriumLatestIndex();
             if (indexToAdd == -1){
-                System.out.format("Movie already added %d times out of maximum %d, no more available auditorium. Exiting", i, ratio);
+                System.out.format("Movie already added %d times out of maximum %d, no more available auditorium. Exiting\n", i, ratio);
                 return;
             }
             // If we got here, we still have index we can add to the auditorium List:
-            System.out.format("Adding to auditorium number %d movie %d", indexToAdd, movieToAdd.getMovieName());
+            System.out.format("\nAdding to auditorium number %d movie", indexToAdd);
             auditoriumArray[indexToAdd].setmovieDisplayed(movieToAdd);
         }
-        System.out.format("Done adding movies. added %d movies total. ", i);
+        System.out.format("\nDone adding movies. added %d movies total. ", i);
     }
 
     public void updateMovie(String oldMovieName, Movie updatedMovie){
@@ -165,7 +181,7 @@ public class Cinema  {
 
     @Override
     public String toString() {
-        return "Movie name is: " + this.cinemaName + " our number of employes is: " + employeesList.size() + " and our number of loyal customers is: " + customerList.size();
+        return "Movie name is: " + this.cinemaName + " our number of employees is: " + employeesList.size() + " and our number of loyal customers is: " + customerList.size();
     }
 
     public boolean isEmployeeExist(Employee newEmployee){
@@ -221,15 +237,26 @@ public class Cinema  {
             return 0;
         }
         // // Search and return the first auditorium without movie name
-        for (Auditorium auditorium : auditoriumArray) {
-            if (auditorium.getMovieDisplayed().movieName.equals("")){
-                return index;
+//        for (Auditorium auditorium : auditoriumArray) {
+//            if (auditorium.getMovieDisplayed() == null){
+//                return index;
+//            }
+//            index++;
+//        }
+
+        for (int i = 0; i < auditoriumArray.length; i++){
+            System.out.println("i = " + i);
+            if (auditoriumArray[i].getMovieDisplayed()==null){
+                return i;
             }
-            index++;
         }
 
         // All the auditorium in our auditorium array has movies name, which means there is no availble auditorium. return -1 as false
         return -1;
+    }
+
+    public Auditorium[] getAuditoriumArray() {
+        return auditoriumArray;
     }
 
     public static long roundUp(long num, long divisor) {

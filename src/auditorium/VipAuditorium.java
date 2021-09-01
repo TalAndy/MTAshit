@@ -9,8 +9,9 @@ import java.util.Arrays;
 
 public class VipAuditorium extends Auditorium {
 
-    public VipAuditorium(int auditoriumNum, Movie movieDisplayed) {
-        super(auditoriumNum, movieDisplayed);
+    public VipAuditorium(int auditoriumNum) {
+//        super(auditoriumNum);
+        super(auditoriumNum);
         boolean[][] seatsArr = new boolean[8][12];
         resetSeatsArr(seatsArr);
         this.seatsArr = seatsArr;

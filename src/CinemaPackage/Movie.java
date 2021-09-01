@@ -24,6 +24,10 @@ public abstract class Movie {
         return movieToCheck.movieName.equals(getMovieName());
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
