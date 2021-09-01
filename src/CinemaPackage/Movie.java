@@ -5,9 +5,9 @@ import People.Customer;
 
 public abstract class Movie {
 
-    String movieName;
-    int duration;
-    String genre;
+    protected String movieName;
+    private final int duration;
+    protected String genre;
 
     public Movie(String movieName, int duration,String genre) {
         this.movieName = movieName;

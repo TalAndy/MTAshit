@@ -1,23 +1,24 @@
 package CinemaPackage;
 // Niv Badli and Tal Endelman
 
+
 import People.Customer;
 import People.Employee;
 import auditorium.Auditorium;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import Cinema.Order;
+
 import auditorium.BigAuditorium;
 import auditorium.SmallAuditorium;
 import auditorium.VipAuditorium;
 
 public class Cinema  {
-    String cinemaName;
-    ArrayList<Employee> employeesList;
-    ArrayList<Customer> customerList;
-    Movie[] moviesArray;
-    Auditorium[] auditoriumArray;
+    protected String cinemaName;
+    protected ArrayList<Employee> employeesList;
+    protected ArrayList<Customer> customerList;
+    protected Movie[] moviesArray;
+    protected Auditorium[] auditoriumArray;
 
     // Constructor
     public Cinema(String cinemaName, int moviesArrayLegnth, int auditoriumArrayLength) {
@@ -39,7 +40,7 @@ public class Cinema  {
                 System.out.println("Creating Auditorium big in run index" + i);
                 this.auditoriumArray[i] = new BigAuditorium(i);
             } else if (Result == 2) {
-                System.out.println("Creating Auditorium vup in run index" + i);
+                System.out.println("Creating Auditorium vip in run index" + i);
                 this.auditoriumArray[i] = new VipAuditorium(i);
             }
         }

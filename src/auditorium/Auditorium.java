@@ -1,20 +1,17 @@
 package auditorium;
 // Niv Badli and Tal Endelman
 
-import Cinema.Order;
 import CinemaPackage.Movie;
+import CinemaPackage.Order;
 import People.Customer;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class  Auditorium {
-    int auditoriumNum;
-    Movie movieDisplayed;
-    boolean[][] seatsArr;
+    protected int auditoriumNum;
+    protected Movie movieDisplayed;
+    protected boolean[][] seatsArr;
 
     public Auditorium(int auditoriumNum) {
         this.auditoriumNum = auditoriumNum;
@@ -45,8 +42,6 @@ public abstract class  Auditorium {
     public void setMovieDisplayed(Movie movieDisplayed) {
         this.movieDisplayed = movieDisplayed;
     }
-
-
 
     public int numOfFreeSeats(boolean[][] auditoriumSeats)
     {

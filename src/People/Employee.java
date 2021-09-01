@@ -1,17 +1,13 @@
 package People;
 // Niv Badli and Tal Endelman
 
-import Cinema.Order;
+import CinemaPackage.Order;
 import CinemaPackage.Movie;
-import CinemaPackage.thrillMovie;
 import auditorium.Auditorium;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Employee extends Customer{
-    int[] daysWorked = new int[30];
-    int hourlySalary = 0;
+    protected int[] daysWorked = new int[30];
+    protected int hourlySalary = 0;
 
     public Employee(String name, int ID, String mailAddress, String phone, int age) {
         super(name, ID, mailAddress, phone, age);

@@ -1,14 +1,14 @@
-package Cinema;
+package CinemaPackage;
 // Niv Badli and Tal Endelman
 
 import java.util.Objects;
 
 public class Order {
-    String movieName;
-    int auditoriumNum;
-    int rowSeatNumber;
-    int chairSeatRow;
-    double ticketPrice;
+    protected String movieName;
+    protected int auditoriumNum;
+    protected int rowSeatNumber;
+    protected int chairSeatRow;
+    protected double ticketPrice;
 
     public Order(String movieName, int auditoriumNum,double ticketPrice,int rowSeatNumber,int chairSeatRow) {
         this.movieName = movieName;

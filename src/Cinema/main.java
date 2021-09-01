@@ -99,7 +99,7 @@ public class main {
         }
     }
 
-//        yesPlanetFrishman.randomTicketSell();
+//      yesPlanetFrishman.randomTicketSell();
         yesPlanetFrishman.randomPopcornSell();
         yesPlanetFrishman.randomPopcornSell();
         yesPlanetFrishman.randomPopcornSell();

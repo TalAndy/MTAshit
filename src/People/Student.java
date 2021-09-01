@@ -2,8 +2,8 @@ package People;
 // Niv Badli and Tal Endelman
 
 public class Student extends Customer{
-    String academicInstitution;
-    String graduationDate;
+    protected String academicInstitution;
+    protected String graduationDate;
 
 
     public Student(String name, int ID, String mailAddress, String phone, int age, String academicInstitution ,String graduationDate){
