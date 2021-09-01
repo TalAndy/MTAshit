@@ -1,4 +1,5 @@
 package People;
+// Niv Badli and Tal Endelman
 
 public abstract class Person {
     String name;

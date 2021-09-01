@@ -1,6 +1,7 @@
 package CinemaPackage;
 
 import People.Customer;
+// Niv Badli and Tal Endelman
 
 public abstract class Movie {
 

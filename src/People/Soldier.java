@@ -1,4 +1,5 @@
 package People;
+// Niv Badli and Tal Endelman
 
 public class Soldier extends Customer {
     String releaseData;

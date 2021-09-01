@@ -1,4 +1,5 @@
 package People;
+// Niv Badli and Tal Endelman
 
 public class Pensioner extends Customer{
 
