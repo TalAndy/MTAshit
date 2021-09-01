@@ -1,6 +1,6 @@
 package People;
 
-import Cinema.Movie;
+import CinemaPackage.Movie;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -18,7 +18,7 @@ public class Customer extends Person implements ICustomer {
         }
 
         if (moviesList.size()==1){
-            if (moviesList.get(0).viewRestriction < getAge()) {
+            if (moviesList.get(0).viewRestriction(this)) {
                 return moviesList.get(0);
             }
             System.out.println("Movies list contains 1 movie and the customer is not qualified to watch it, Exiting.... ");
@@ -36,7 +36,7 @@ public class Customer extends Person implements ICustomer {
         // we need to random another movie and check it. only when this condition is false -
         // we will return the movie.
 
-        while (!(randomMovie.viewRestriction < getAge())){
+        while (!(randomMovie.viewRestriction(this))){
             randomMovie = moviesList.get(rand.nextInt(moviesList.size()));
         }
 

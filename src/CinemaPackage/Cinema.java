@@ -6,6 +6,7 @@ import auditorium.Auditorium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -113,13 +114,18 @@ public class Cinema  {
         Customer randomCustomer = customerList.get(ThreadLocalRandom.current().nextInt(customerList.size()));
         Employee randomEmployee = employeesList.get(ThreadLocalRandom.current().nextInt(employeesList.size()));
 
-        ArrayList<Movie> movieArrayList =  new ArrayList<Movie>(Arrays.asList(moviesArray));
+        ArrayList<Movie> movieArrayList =  new ArrayList<Movie>();
+//        Collections.addAll(movieArrayList, moviesArray);
+        for (Movie movie : moviesArray) {
+            movieArrayList.add(movie);
+        }
 
-//        Movie randomMovieChosen = randomCustomer.getRandomMovie(moviesArray);
+
+        Movie randomMovieChosen = randomCustomer.getRandomMovie(movieArrayList);
 
 
         for (Auditorium auditorium : auditoriumArray) {
-            auditorium.buyTicket(randomCustomer)
+            auditorium.buyTicket(randomCustomer);
         }
 
 

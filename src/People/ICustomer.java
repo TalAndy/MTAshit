@@ -1,6 +1,6 @@
 package People;
 
-import Cinema.Movie;
+import CinemaPackage.Movie;
 
 import java.util.ArrayList;
 
